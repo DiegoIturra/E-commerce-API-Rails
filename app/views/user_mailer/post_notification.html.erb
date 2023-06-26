@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      img{
+        max-width: 200;
+        max-height: 100
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Boleta de compra en E-commerce</h1>
+    <p>
+      Tus productos se han procesado correctamente<br>
+      A continuación te dejamos información de tu carrito de compra
+      <br>
+    </p>
+
+    <ul>
+      <% @list_of_products.each do |product| %>
+        <% product = JSON.parse(product) %>
+        <li><%= product["title"] %>: $<%= product["price"] %></li>
+        <img src="<%= product["image_url"] %>" alt="Image">
+      <% end %>
+    </ul>
+
+    <h4>
+      Total: $<%= @total_price %>
+    </h4>
+    <p>Gracias por su compra</p>
+  </body>
+</html>
