@@ -16,10 +16,6 @@ class CartsController < ApplicationController
     def create
         @cart = Cart.new(cart_params)
 
-        puts "ESTOS SON LOS PARAMETROS"
-        puts cart_params.to_json
-        puts cart_params[:total_price]
-
         if @cart.save
             #TODO: enviar datos para el correo con Sidekiq
             SendEmailsJob.perform_async(cart_params[:user_id], cart_params[:total_price], cart_params[:product_ids])

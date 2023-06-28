@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   patch '/articles/:id', to: 'articles#update'
   delete '/articles/:id', to: 'articles#destroy'
   delete 'articles', to: 'articles#destroy_all_articles'
+
+  post '/mercado_pago/create_preferences', to: 'mercado_pago#create_preferences'
   
 end
